@@ -7,7 +7,18 @@
         "eslint:recommended",
         "plugin:react/recommended"
     ],
+    // "react/react-in-jsx-scope": "off",
+
     "overrides": [
+        {
+            "files": ["*.jsx"],
+            "extends": ["plugin:react/recommended"],
+            "parserOptions": {
+                "ecmaFeatures": {
+                    "jsx": true
+                }
+            }
+        }
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -17,10 +28,7 @@
         "react"
     ],
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
+        "indent": ["error", 2],
         "linebreak-style": [
             "error",
             "unix"
