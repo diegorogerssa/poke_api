@@ -26,13 +26,13 @@ const Container = styled.section`
     background-image: url(${back});
     background-size: cover;
     background-position: center center;
-    width: 18%;
-    height: 40%;
+    width: 290px;
+    height: 400px;
     padding-top: 10px;
     padding-bottom: 10px;
   }
   img{
-   width: 20%;
+   width: 30%;
    background-color: transparent;
  
   }

@@ -10,6 +10,11 @@ import StyledHeading from '../../shared/styled/StyledHeading';
 import StyledPokebola from './styles/StyledPokebola';
 import StyledSpanPokeball from './styles/StyledSpanPokeball';
 import poke from '../../../assets/pokebola-loser.png';
+import { Link } from 'react-router-dom';
+import pokedex from '../../../assets/pokedex.svg';
+import pokeWin from '../../../assets/pokebola-wins.png';
+
+
 
 const CardWhatIsNamePokemon =  () => {
   const { 
@@ -17,14 +22,17 @@ const CardWhatIsNamePokemon =  () => {
     winner, 
     setWinner, 
     loser, 
-    setLoser 
+    setLoser,
+    idRandom,
   } = useContext(DataContext);
 
   const [array, setArray] = useState([]);
   const [pointsLife, setPointsLife] = useState(3);
-  let pokeballRef = useRef(5); //@TODO: Refatorar para usar o useState
+  const [pokeball, setPokeball] = useState(1000);
   const alphabetRefs = useRef([]);
 
+
+  
   const nameArray = pokemon.name 
     ? pokemon.name.split('') 
     : []; 
@@ -36,8 +44,8 @@ const CardWhatIsNamePokemon =  () => {
   const arrayFill = new Array(nameArray.length).fill(' ');
   
   const usePokeball = () => {
-    if (pokeballRef.current > 0) {
-      pokeballRef.current = pokeballRef.current - 1;
+    if (pokeball > 0) {
+      setPokeball(pokeball - 1);
       const index = array.findIndex((letra) => letra === ' '); 
       const letraIndex = nameArray[index];
       nameArray.filter((letra, i) => {
@@ -88,17 +96,37 @@ const CardWhatIsNamePokemon =  () => {
     const namePokemon = pokemon.name;
     if( stringArray === namePokemon) {
       setWinner(true);
-      pokeballRef.current = pokeballRef.current + 1;
+      setPokeball(pokeball + 1);
+
+      const getPokemons = JSON.parse(localStorage.getItem('idsPokemons'));
+      if (getPokemons) {
+        const pokeIds = [...getPokemons, idRandom];
+        localStorage.setItem('idsPokemons', JSON.stringify(pokeIds));
+      } else {
+        localStorage.setItem('idsPokemons', JSON.stringify([idRandom]));
+      }
     }
+   
   };
+
+  useEffect(() => {
+    // const initialPoke = 2;
+    const getPokeballs = localStorage.getItem('pokeballs');
+    if(getPokeballs) {
+      setPokeball(getPokeballs);
+    } 
+    // else {
+    //   localStorage.setItem('pokeballs', initialPoke);
+    // }
+  }, []);
 
   useEffect(() => {
     setArray(arrayFill);
   }, [pokemon]);
 
   useEffect(() => {
-    localStorage.setItem('pokeballs', pokeballRef.current);
-  }, [pokeballRef.current]);
+    localStorage.setItem('pokeballs', pokeball);
+  }, [pokeball]);
 
   useEffect(() => {
     verifyWinner();
@@ -117,11 +145,33 @@ const CardWhatIsNamePokemon =  () => {
       >
         {
           !winner &&
-          <StyledHeading level={2}>Quem é esse pokemon?</StyledHeading>
+          <StyledGerericWrapper
+            flexDirection='column'
+            width='300px'
+            height='80px'
+            backgroundColor= 'transparent'
+            
+          >
+            <StyledHeading level={2}>Quem é esse pokemon?</StyledHeading>
+            <Link to="/foundpokemons" style={{backgroundColor:'transparent', color: 'black'}}>
+              <img src={ pokedex } style={{width: '20px', backgroundColor:'transparent'}} alt="" />
+            </Link>
+          </StyledGerericWrapper>
         }
         {
           winner &&
-          <StyledHeading level={2}>Parabéns</StyledHeading>
+         <StyledGerericWrapper
+           flexDirection='column'
+           width='300px'
+           height='80px'
+           backgroundColor= 'transparent'
+           
+         >
+           <StyledHeading level={2}>Parabéns</StyledHeading>
+           <Link to="/foundpokemons" style={{backgroundColor:'transparent', color: 'black'}}>
+             <img src={ pokedex } style={{width: '20px', backgroundColor:'transparent'}} alt="" />
+           </Link>
+         </StyledGerericWrapper>
         }
         {array.length > 0 &&
         <StyledNamePokemon>
@@ -152,9 +202,9 @@ const CardWhatIsNamePokemon =  () => {
             onClick = {usePokeball}
           >
             <StyledPokebola src={poke} />   
-            <StyledSpanPokeball>{ pokeballRef.current }</StyledSpanPokeball>
+            <StyledSpanPokeball>{ pokeball }</StyledSpanPokeball>
             
-          </StyledGerericWrapper>      
+          </StyledGerericWrapper>   
         </StyledGerericWrapper>
         } 
         {
@@ -169,7 +219,7 @@ const CardWhatIsNamePokemon =  () => {
               <StyledHeading
                 level={3}
                 textAlign = 'center'
-              >Parábens você encontrou um Pokemon e ganhou uma pokebola</StyledHeading>
+              >Parábens você encontrou o { pokemon.name } e ganhou uma pokebola</StyledHeading>
               <StyledGerericWrapper
                 justifyContent = 'space-around'
                 height = '85px'
@@ -177,10 +227,13 @@ const CardWhatIsNamePokemon =  () => {
                 backgroundColor = {({theme}) => theme.light.palette.secondary.yellow}
                 onClick = {usePokeball}
               >
-                <StyledPokebola src={poke} />   
                 
-              </StyledGerericWrapper>      
-            </StyledGerericWrapper>
+              
+                <StyledPokebola src={pokeWin} />   
+                <button onClick={() => window.location.reload()}>jogar novamente</button>
+              </StyledGerericWrapper>
+            </StyledGerericWrapper>      
+           
         }  
         <StyledGerericWrapper>
           { 

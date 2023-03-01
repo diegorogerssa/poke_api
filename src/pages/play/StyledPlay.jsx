@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import cursor from '../../assets/ditto-cursor.cur';
 import cursor2 from '../../assets/ditto-thinking-cursor.cur';
 
-export const HomeStyled = styled.div`
+export const StyledPlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

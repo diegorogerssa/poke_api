@@ -5,6 +5,7 @@ ${({ theme }) => css`
     display: flex;
     justify-content: ${(props) => props.justifyContent || 'center'};
     flex-direction: ${(props) => props.flexDirection || 'row'};
+    justify-items: ${(props) => props.justifyItems || 'center'};
     flex-wrap: ${(props) => props.flexWrap || 'wrap'};
     align-items: ${(props) => props.alignItems || 'center'};
     width: ${(props) => props.width || '90%'};
@@ -13,6 +14,7 @@ ${({ theme }) => css`
     border-radius: ${(props) => props.borderRadius || '10px'};
     font-weight: ${(props) => props.fontWeight || 'bold'};
     border: ${(props) => props.border || 'none'};
+    margin: ${(props) => props.margin || '0'};
   `}
   `;
 

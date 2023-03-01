@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import heart from '../../../../assets/elements/heart.svg';
+import heart from '../../../../assets/heart.svg';
 
 const StyledPointsLife = styled.span`
     display: flex;
