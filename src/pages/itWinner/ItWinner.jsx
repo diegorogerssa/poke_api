@@ -5,17 +5,10 @@ import StyledItWinner from './StyledItWinner';
 import { useNavigate } from 'react-router-dom';
 
 const ItWinner = () => {
-  const {setWinner, pokemon} = useContext(DataContext);
+  const { pokemon, handlePlayReload} = useContext(DataContext);
 
   const navigate = useNavigate();
-  const handleReload = () => {
-    setTimeout(() => {
-      setWinner(false);
-    }, 1000);
-    navigate('/play');
-    window.location.reload();
-
-  };
+  
   const handleNavigate = () => {
     navigate('/foundpokemons');
   };
@@ -35,7 +28,7 @@ const ItWinner = () => {
         />
         <p>{pokemon.name}</p>
         <button
-          onClick={handleReload}
+          onClick={handlePlayReload}
         >
           Jogar Novamente</button>
         <button

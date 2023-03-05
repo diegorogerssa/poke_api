@@ -4,7 +4,7 @@ import DataContext from '../../contexts/DataContext';
 import StyledItLost from './StyledItLost';
 
 const ItLost = () => {
-  const { handleReload} = useContext(DataContext);
+  const { handlePlayReload} = useContext(DataContext);
 
   return (
     <StyledItLost>
@@ -12,7 +12,7 @@ const ItLost = () => {
         <img src={poke} alt="icon-poke" />
         <p>O jogo acabou</p>
         <button
-          onClick={handleReload}
+          onClick={handlePlayReload}
         >
           Tentar Novamente</button>
       </div>
