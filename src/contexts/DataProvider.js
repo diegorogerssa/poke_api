@@ -3,6 +3,7 @@ import DataContext from './DataContext';
 import PropTypes from 'prop-types';
 import { getPokemons } from '../utils/data';
 import { getPokemon } from '../services/api/api';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,6 +15,8 @@ const DataProvider = ({ children }) => {
   
   const [loser, setLoser] = React.useState(false);
 
+  const navigate = useNavigate(); 
+
 
   useEffect(() => {
     async function fetchData() {
@@ -24,9 +27,15 @@ const DataProvider = ({ children }) => {
   }, []);
   
   React.useEffect(() => {
+    const getPokemons = JSON.parse(localStorage.getItem('idsPokemons'));
+    let random = Math.floor(Math.random() * 150) + 1;
+    // let random = 25;
+    if (getPokemons) {
+      while (getPokemons.includes(random)) {
+        random = Math.floor(Math.random() * 150) + 1;
+      }
+    }
     async function getPokemonData() {
-      const random = Math.floor(Math.random() * 1008) + 1;
-      // const random = 25;
 
       setIdRandom(random);
       // console.log(random);
@@ -36,6 +45,26 @@ const DataProvider = ({ children }) => {
     getPokemonData();
   }, []);
   
+
+  const handlePlayReload = () => {
+    navigate('/play');
+    setTimeout(() => {
+      setLoser(false);
+      setWinner(false);
+      setPokemon([]);
+    }, 0.1);
+    window.location.reload();
+  };
+
+  const handlePokedexReload = () => {
+    navigate('/foundpokemons');
+    setTimeout(() => {
+      setLoser(false);
+      setWinner(false);
+      setPokemon([]);
+    }, 0.1);
+    window.location.reload();
+  };
 
   const data = {
     objectData,
@@ -47,6 +76,8 @@ const DataProvider = ({ children }) => {
     loser,
     setLoser,
     idRandom,
+    handlePlayReload,
+    handlePokedexReload,
   };
 
   return (

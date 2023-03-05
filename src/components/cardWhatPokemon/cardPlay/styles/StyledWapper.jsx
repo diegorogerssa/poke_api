@@ -6,11 +6,31 @@ const StyledWapper = styled.section`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 60vw;
-  height: 80vh;
+  width: 100%;
+  height: 80%;
   background-color: ${theme.light.palette.secondary.yellow};
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 20px 20px 0 0;
   `}
+  @media (min-width: 321px) and (max-width: 480px) {
+    height: 50%
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+/* Adicione seus estilos aqui */
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  height: 50%;
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  height: 50%;
+}
+
+@media (min-width: 1281px) {
+  width: 50%;
+  border-radius: 0 20px 20px 0;
+}
 `;
 
 export default StyledWapper;

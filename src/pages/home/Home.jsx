@@ -1,34 +1,31 @@
 import React from 'react';
 import StyledGerericWrapper from '../../components/shared/styled/StyledGerericWrapper';
-import quem from '../../assets/home/quem.png';
-import pokemon from '../../assets/home/pokemon.png';
-import interrogacao from '../../assets/home/interrogacao.png';
-import { StyledImages } from './StyledImages';
-import StyledButton from './styledButton';
+import whatPokemon from '../../assets/home/quem-e-esse-pokemon.png';
+
 import { Link } from 'react-router-dom';
+import { StyledButton, StyledImages, StyledWrapper } from './StyledHome';
+
 
 
 const Home = () => {
-  return <StyledGerericWrapper
-    width="100vw"
-    height="100vh"
-    flexDirection="column"
-    backgroundColor = {({theme}) => theme.light.palette.primary.blue}
-    borderRadius = '0'
-  >
-    <StyledImages src={quem} alt='quem é esse pokemon' 
-      width='300px'
-    />
-    <StyledImages src={pokemon} alt='quem é esse pokemon' 
-      width='500px'
-    />
-    <StyledImages src={interrogacao} alt='quem é esse pokemon' 
-      width='60px'
-    />
+  return <StyledWrapper>
     <StyledGerericWrapper
-      width = '500px'
-      justifyContent = 'space-around'
       backgroundColor = 'transparent'
+      width = '100%'
+      height = '100%'
+      flexDirection = 'column'
+      justifyContent = 'flex-end'
+      // padding = '100px 0 0 0'
+    >
+      <StyledImages src={whatPokemon} alt='quem é esse pokemon'/>
+
+    </StyledGerericWrapper>
+    <StyledGerericWrapper
+      // width = '500px'
+      flexDirection = 'column'
+      justifyContent = 'flex-start'
+      backgroundColor = 'transparent'
+      padding = '50px 0 0 0'
     >
       <Link to='/play'>
         <StyledButton>Jogar</StyledButton>
@@ -37,7 +34,7 @@ const Home = () => {
         <StyledButton>Ver Pokemons</StyledButton>
       </Link>
     </StyledGerericWrapper>
-  </StyledGerericWrapper>;
+  </StyledWrapper>;
 };
 
 export default Home;

@@ -1,26 +1,20 @@
 import React, { useEffect, useContext, useState, useRef } from 'react';
 import DataContext from '../../../contexts/DataContext';
-import LoserPopup from '../LoserPopup';
 import StyledWapper from './styles/StyledWapper';
 import StyledNamePokemon from './styles/StyledNamePokemon';
 import StyledPointsLife from './styles/StyledPointsLife';
 import StyledGerericWrapper from '../../shared/styled/StyledGerericWrapper';
 import StyledAlfa from './styles/StyledAlfa';
-import StyledHeading from '../../shared/styled/StyledHeading';
-import StyledPokebola from './styles/StyledPokebola';
-import StyledSpanPokeball from './styles/StyledSpanPokeball';
-import poke from '../../../assets/pokebola-loser.png';
-import { Link } from 'react-router-dom';
-import pokedex from '../../../assets/pokedex.svg';
-import pokeWin from '../../../assets/pokebola-wins.png';
 
+import StyledPokebola from './styles/StyledPokebola';
+import { useNavigate } from 'react-router-dom';
 
 
 const CardWhatIsNamePokemon =  () => {
   const { 
-    pokemon, 
+    pokemon,
     winner, 
-    setWinner, 
+    setWinner,
     loser, 
     setLoser,
     idRandom,
@@ -28,8 +22,12 @@ const CardWhatIsNamePokemon =  () => {
 
   const [array, setArray] = useState([]);
   const [pointsLife, setPointsLife] = useState(3);
-  const [pokeball, setPokeball] = useState(1000);
+  const [qtdPokeball, setQtdPokeball] = useState(false);
   const alphabetRefs = useRef([]);
+  const [pokeball, setPokeball] = useState(() => {
+    const getPokeballs = JSON.parse(localStorage.getItem('pokeballs'));
+    return getPokeballs ?? 1000;
+  });
 
 
   
@@ -63,10 +61,20 @@ const CardWhatIsNamePokemon =  () => {
             newArray[i] = letraIndex;
             return newArray;
           },);
+          setQtdPokeball(!qtdPokeball);
+          console.log(qtdPokeball);
         }
       });
     }
   };
+  
+  useEffect(() => {
+    localStorage.setItem('pokeballs', pokeball);
+    console.log('controlado');
+    console.log(pokeball);
+
+  }, [qtdPokeball]);
+
 
 
   const captureLetter = (e) => {
@@ -106,27 +114,28 @@ const CardWhatIsNamePokemon =  () => {
         localStorage.setItem('idsPokemons', JSON.stringify([idRandom]));
       }
     }
-   
   };
 
+
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // const initialPoke = 2;
-    const getPokeballs = localStorage.getItem('pokeballs');
-    if(getPokeballs) {
-      setPokeball(getPokeballs);
-    } 
-    // else {
-    //   localStorage.setItem('pokeballs', initialPoke);
-    // }
-  }, []);
+    
+    if (loser) {
+      return navigate ('/itloser');
+    } else if (winner) {
+      return navigate ('/itwinner');
+    }
+  }, [loser, winner]);
+
+
+  
 
   useEffect(() => {
     setArray(arrayFill);
   }, [pokemon]);
 
-  useEffect(() => {
-    localStorage.setItem('pokeballs', pokeball);
-  }, [pokeball]);
+
 
   useEffect(() => {
     verifyWinner();
@@ -138,112 +147,59 @@ const CardWhatIsNamePokemon =  () => {
     }
   }, [pointsLife]);
   
-  return (
-    loser ? <LoserPopup /> :
-      <StyledWapper
-        winColor = {winner ? '#02e202' : '#f7f7f7'}
+  if (array.length > 0 ) return (
+    <StyledWapper>
+      <StyledNamePokemon>
+        {
+          array.map((letra, i) => {
+            return <li key={i} >
+              {letra}
+            </li>;
+          }
+          )
+        }
+      </StyledNamePokemon>        
+      <StyledGerericWrapper
+        justifyContent = 'center'
+        height = '15vh'
+        height480 = '10vh'
+        height768 = '15vh'
+        height1024 = '9vh'
+        height1280 = '40%'
+        height1281 = '20%'
+        width1281 = '100%'
+        width =  '100vw'
+        // margin = '10px 0 10px 0'
+        gap = '10vw'
+        backgroundColor = {({theme}) => theme.light.palette.secondary.yellow}
       >
-        {
-          !winner &&
-          <StyledGerericWrapper
-            flexDirection='column'
-            width='300px'
-            height='80px'
-            backgroundColor= 'transparent'
-            
-          >
-            <StyledHeading level={2}>Quem é esse pokemon?</StyledHeading>
-            <Link to="/foundpokemons" style={{backgroundColor:'transparent', color: 'black'}}>
-              <img src={ pokedex } style={{width: '20px', backgroundColor:'transparent'}} alt="" />
-            </Link>
-          </StyledGerericWrapper>
+        <StyledPointsLife>{pointsLife}</StyledPointsLife>
+        <StyledPokebola
+          onClick = {usePokeball}
+        >{ pokeball }</StyledPokebola>   
+          
+      </StyledGerericWrapper>
+        
+      <StyledGerericWrapper
+        height = '30vh'
+        height480= '23vh'
+        height768 = '30vh'
+        height1024 = '30vh'
+        height1280 = '65%'
+        height1281 = '50%'
+        width1281 = '100%'
+        borderRadius1281 = '0 0 20px 0'
+        borderRadius = '20px 20px 0 0'
+        padding = '10px'
+      >
+        { 
+          alphabet.map((letra, i) => <StyledAlfa 
+            key={i} 
+            ref={(element) => alphabetRefs.current[i] = element}
+            onClick = {captureLetter}>{letra}</StyledAlfa>)
         }
-        {
-          winner &&
-         <StyledGerericWrapper
-           flexDirection='column'
-           width='300px'
-           height='80px'
-           backgroundColor= 'transparent'
-           
-         >
-           <StyledHeading level={2}>Parabéns</StyledHeading>
-           <Link to="/foundpokemons" style={{backgroundColor:'transparent', color: 'black'}}>
-             <img src={ pokedex } style={{width: '20px', backgroundColor:'transparent'}} alt="" />
-           </Link>
-         </StyledGerericWrapper>
-        }
-        {array.length > 0 &&
-        <StyledNamePokemon>
-          {
-            array.map((letra, i) => {
-              return <li key={i} >
-                {letra}
-              </li>;
-            }
-            )
-          }
-        </StyledNamePokemon>
-        }
-        {
-          !winner &&
-        <StyledGerericWrapper
-          justifyContent = 'center'
-          height = '20vh'
-          width =  '50vw'
-          backgroundColor = {({theme}) => theme.light.palette.secondary.yellow}
-        >
-          <StyledPointsLife>{pointsLife}</StyledPointsLife>
-          <StyledGerericWrapper
-            justifyContent = 'space-around'
-            height = '85px'
-            width =  '85px'
-            backgroundColor = {({theme}) => theme.light.palette.secondary.yellow}
-            onClick = {usePokeball}
-          >
-            <StyledPokebola src={poke} />   
-            <StyledSpanPokeball>{ pokeball }</StyledSpanPokeball>
-            
-          </StyledGerericWrapper>   
-        </StyledGerericWrapper>
-        } 
-        {
-          winner &&
-            <StyledGerericWrapper
-              justifyContent = 'space-around'
-              flexDirection = 'column'
-              height = '20vh'
-              width =  '50vw'
-              backgroundColor = {({theme}) => theme.light.palette.secondary.yellow}
-            >
-              <StyledHeading
-                level={3}
-                textAlign = 'center'
-              >Parábens você encontrou o { pokemon.name } e ganhou uma pokebola</StyledHeading>
-              <StyledGerericWrapper
-                justifyContent = 'space-around'
-                height = '85px'
-                width =  '85px'
-                backgroundColor = {({theme}) => theme.light.palette.secondary.yellow}
-                onClick = {usePokeball}
-              >
-                
-              
-                <StyledPokebola src={pokeWin} />   
-                <button onClick={() => window.location.reload()}>jogar novamente</button>
-              </StyledGerericWrapper>
-            </StyledGerericWrapper>      
-           
-        }  
-        <StyledGerericWrapper>
-          { 
-            alphabet.map((letra, i) => <StyledAlfa 
-              key={i} 
-              ref={(element) => alphabetRefs.current[i] = element}
-              onClick = {captureLetter}>{letra}</StyledAlfa>)
-          }
-        </StyledGerericWrapper>
-      </StyledWapper>
+      </StyledGerericWrapper>
+    </StyledWapper>
   );
 };
 

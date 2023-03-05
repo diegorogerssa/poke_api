@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
 import styled from 'styled-components';
 import back from '../../assets/loser-background.png';
-import poke from '../../assets/pokebola-loser.png';
-import DataContext from '../../contexts/DataContext';
 
-const Container = styled.section`
+
+const StyledItWinner = styled.section`
   //popup
   display: flex;
   justify-content: center;
@@ -13,8 +11,7 @@ const Container = styled.section`
   width: 100vw;
   height: 100vh;
   background-color: transparent;
-  position: absolute;
-  z-index: 1;
+
   
   div{
     display: flex;
@@ -32,7 +29,7 @@ const Container = styled.section`
     padding-bottom: 10px;
   }
   img{
-   width: 30%;
+   width: ${props => props.width? props.width : '60px'};
    background-color: transparent;
  
   }
@@ -64,28 +61,5 @@ const Container = styled.section`
 
 `;
 
-const LoserPopup = () => {
-  const {setLoser} = useContext(DataContext);
+export default StyledItWinner;
 
-  const handleReload = () => {
-    setTimeout(() => {
-      setLoser(false);
-    }, 1000);
-    window.location.reload();
-      
-  };
-  return (
-    <Container>
-      <div>
-        <img src={poke} alt="icon-poke" />
-        <p>O jogo acabou</p>
-        <button
-          onClick={handleReload}
-        >
-          Tentar Novamente</button>
-      </div>
-    </Container>
-  );
-};
-
-export default LoserPopup;
