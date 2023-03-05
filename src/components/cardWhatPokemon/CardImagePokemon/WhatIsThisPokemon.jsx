@@ -18,6 +18,7 @@ const CardContainer = styled.div`
   background-image: ${(props) => props.backgroundImage};
   background-size: cover;
   background-position: center center;
+  border: 10px solid #ffffff;
   
 
   img { 
@@ -31,6 +32,7 @@ const CardContainer = styled.div`
 
 @media (min-width: 321px) and (max-width: 480px) {
   align-items: center;
+  border: none;
   height: 50%;
   img {
     width: 80%;
@@ -38,6 +40,7 @@ const CardContainer = styled.div`
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
+  border: none;
   height: 45%;
   img {
     width: 50%;
@@ -46,6 +49,7 @@ const CardContainer = styled.div`
 
 @media (min-width: 769px) and (max-width: 1024px) {
   /* padding: 15vh 0 0 0; */
+  border: none;
   height: 50%;
   img {
     width: 45%;
@@ -53,6 +57,7 @@ const CardContainer = styled.div`
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
+  border: none;
   height: 50%;
   img {
     width: 45%;
@@ -64,7 +69,7 @@ const CardContainer = styled.div`
     width: 50%;
     border-radius: 20px 0 0 20px;
     img {
-    width: 80%;
+    width: 70%;
   }
 }
 `;
@@ -76,7 +81,7 @@ const CardPokemon = () => {
   return (
     
     <CardContainer 
-      background ='#26458b'
+      background ='#3E5CA2'
     >
       <StyledGerericWrapper
         height480='50vh'

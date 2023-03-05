@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledFoundPokemons = styled.div`
   display: flex;
   align-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;

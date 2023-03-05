@@ -23,7 +23,7 @@ const FoundPokemons = () => {
     promisse.then((res) => {
       setPokemons(res);
     }
-    );
+    ); 
 
   }, []);
 
@@ -40,16 +40,17 @@ const FoundPokemons = () => {
             justifyContent='space-around'
             flexDirection='column'
             flex-wrap='wrap'
-            width='100%'
-            height='150px'
-            height768='150px'
-            height1024='150px'
-            width1024='20%'
-            height1280='150px'
-            width1280='20%'
-            width1281='15%'
-            height1281='150px'
-            margin='5px'
+            width='100px'
+            height='100px'
+            // height768='150px'
+            // width768='20%'
+            // height1024='150px'
+            // width1024='20%'
+            // height1280='150px'
+            // width1280='20%'
+            // width1281='15%'
+            // height1281='150px'
+            // margin='5px'
             key={pokemon.id}
             // flexDirection='column'
           >

@@ -47,22 +47,26 @@ const StyledNamePokemon = styled.ul`
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-
+  li {
+    font-size: 2.5rem;  
+  }
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
   height: 60%;
   li {
     height: 90%;
+    font-size: 4rem;
   }
 }
 
 @media (min-width: 1281px) {
   height: 30%;
-  width: 50%;
+  width: 90%;
   li {
     width: 95%;
     height: 30%;
+    font-size: 3rem;
   }
 }
 

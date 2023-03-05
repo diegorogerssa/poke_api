@@ -50,12 +50,12 @@ const Header = () => {
       {
         pathname === '/play'   &&
         
-          <StyledImg src={ pokemon } alt="play" 
+          <StyledImg src={ pokemon } alt="pokemon" 
             width='40%'
             width768='25%'
             width1024='20%'
             width1280='20%'
-            width1281='14%'
+            width1281='12%'
           />
        
       }
