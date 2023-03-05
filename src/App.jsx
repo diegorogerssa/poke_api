@@ -12,7 +12,7 @@ const AppStyled = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #9BA0BC;
+  background-color: #3E5CA2;
 
   
   `;
@@ -21,12 +21,14 @@ const AppStyled = styled.div`
 function App() {
   
   return (
-    <ThemeProvider theme={themes}>
-      <AppStyled>
-        <AppRouter />
-        <GlobalStyle />
-      </AppStyled>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={themes}>
+        <AppStyled>
+          <AppRouter />
+          <GlobalStyle />
+        </AppStyled>
+      </ThemeProvider>
+    </>
   );
 }
 

@@ -8,7 +8,6 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         font-family: 'Roboto', sans-serif;
-        background-color: #9BA0BC;
         cursor:  url(${cursor}), auto;
         
         @supports (cursor: grab) {
