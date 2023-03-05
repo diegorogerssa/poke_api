@@ -1,5 +1,4 @@
 import React from 'react';
-import StyledGerericWrapper from '../../components/shared/styled/StyledGerericWrapper';
 import whatPokemon from '../../assets/home/quem-e-esse-pokemon.png';
 
 import { Link } from 'react-router-dom';
@@ -9,23 +8,10 @@ import { StyledButton, StyledImages, StyledWrapper } from './StyledHome';
 
 const Home = () => {
   return <StyledWrapper>
-    <StyledGerericWrapper
-      backgroundColor = 'transparent'
-      width = '100%'
-      height = '100%'
-      flexDirection = 'column'
-      justifyContent = 'flex-end'
-      // padding = '100px 0 0 0'
-    >
-      <StyledImages src={whatPokemon} alt='quem é esse pokemon'/>
+   
+    <StyledImages src={whatPokemon} alt='quem é esse pokemon'/>
 
-    </StyledGerericWrapper>
-    <StyledGerericWrapper
-      // width = '500px'
-      flexDirection = 'column'
-      justifyContent = 'flex-start'
-      backgroundColor = 'transparent'
-      padding = '50px 0 0 0'
+    <div
     >
       <Link to='/play'>
         <StyledButton>Jogar</StyledButton>
@@ -33,7 +19,7 @@ const Home = () => {
       <Link to='/foundpokemons'>
         <StyledButton>Ver Pokemons</StyledButton>
       </Link>
-    </StyledGerericWrapper>
+    </div>
   </StyledWrapper>;
 };
 

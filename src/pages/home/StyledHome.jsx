@@ -5,12 +5,23 @@ export const StyledWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* justify-items: baseline; */
-  width: 100vw;
-  height: 100vh;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
   background-color: ${({ theme }) => theme.light.palette.primary.blue};
   border-radius: 0;
 
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: ${({ theme }) => theme.light.palette.primary.blue};
+      border-radius: 0;
+    }
   
 `;
 
@@ -28,13 +39,13 @@ export const StyledImages = styled.img`
 /* Estilos para telas maiores que 480px e menores que 768px (ex: tablets) */
 @media (min-width: 481px) and (max-width: 768px) {
   /* Adicione seus estilos aqui */
-  width: 70vw;
+  /* width: 70vw; */
 }
 
 /* Estilos para telas maiores que 768px e menores que 1024px (ex: laptops) */
 @media (min-width: 769px) and (max-width: 1024px) {
   /* Adicione seus estilos aqui */
-  width: 50vw;
+  /* width: 50vw; */
 }
 
 /* Estilos para telas maiores que 1024px e menores que 1280px (ex: monitores menores) */
