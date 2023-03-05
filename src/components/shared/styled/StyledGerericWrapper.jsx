@@ -21,34 +21,31 @@ ${({ theme }) => css`
   `}
 
   @media (min-width: 321px) and (max-width: 480px) {
-    height:${(props) => props.height480 || '130px'};
-    width:${(props) => props.width480 || '130px'};
-    margin:${(props) => props.margin480 || '5px'};
+    height:${(props) => props.height480 || '10vh'};
+    width:${(props) => props.width480 || '100%'};
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-  height:${(props) => props.height768 || '130px'};
-  width:${(props) => props.width768 || '130px'};
-  margin:${(props) => props.margin480 || '5px'};
+  height:${(props) => props.height768 || '100vh'};
+  width:${(props) => props.width768 || '100%'};
+
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  height:${(props) => props.height1024 || '130px'};
-  width:${(props) => props.width1024 || '130px'};
-  margin:${(props) => props.margin480 || '5px'};
+  height:${(props) => props.height1024 || '100vh'};
+  width:${(props) => props.width1024 || '100%'};
+
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
-  height:${(props) => props.height1280 || '130px'};
-  width:${(props) => props.width1280 || '130px'};
-  margin:${(props) => props.margin480 || '5px'};
+  height:${(props) => props.height1280 || '100vh'};
+  width:${(props) => props.width1280 || '100%'};
 }
 
 @media (min-width: 1281px) {
-  width:${(props) => props.width1281 || '130px'};
-  height:${(props) => props.height1281 || '130px'};
-  border-radius:${(props) => props.borderRadius1281 || '0 0 0 0'};
-  margin:${(props) => props.margin480 || '5px'};
+width:${(props) => props.width1281 || '100%'};
+height:${(props) => props.height1281 || '100vh'};
+border-radius:${(props) => props.borderRadius1281 || '0 0 0 0'};
 }
   `;
 
