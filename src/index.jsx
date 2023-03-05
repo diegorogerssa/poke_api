@@ -11,7 +11,6 @@ root.render(
       <App />
     </DataProvider>
   </HashRouter>
-    
 );
 
 

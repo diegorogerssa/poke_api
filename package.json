@@ -21,7 +21,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "openmobile": "node ./node_modules/openmobile/ip.js"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +45,7 @@
   "devDependencies": {
     "eslint": "^8.34.0",
     "eslint-plugin-react": "^7.32.2",
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "openmobile": "^1.0.0"
   }
 }
