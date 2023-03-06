@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import pokedexIcon from '../../assets/pokedexIcon.png';
 import { StyledHeader, StyledImg } from './styles/StyledHeader';
 // import { GoHome } from 'react-icons/go';
@@ -16,12 +15,12 @@ import { useLocation } from 'react-router-dom';
 
 const Header = () => {
 
-  const { handlePlayReload, handlePokedexReload }  = useContext(DataContext);
+  const { handlePlayReload, handlePokedexReload, handleHomeReload }  = useContext(DataContext);
   const { pathname } = useLocation();
 
   return (
     <StyledHeader>
-      <Link to='/'>
+      <button onClick={ handleHomeReload }>
         <StyledImg src={ home } alt="play" 
           width='35px'
           height= 'auto'
@@ -31,7 +30,7 @@ const Header = () => {
           width1281='60px'
 
         />
-      </Link>
+      </button>
       {
         pathname === '/foundpokemons'   &&
       
@@ -68,9 +67,6 @@ const Header = () => {
             width1024='70px'
             width1280='70px'
             width1281='75px'
-           
-           
-           
           />
         </button>
       }

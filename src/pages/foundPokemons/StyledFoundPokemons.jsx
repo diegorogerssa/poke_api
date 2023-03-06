@@ -8,13 +8,21 @@ const StyledFoundPokemons = styled.div`
   width: 100%;
   height: 100%;
   padding: 5px;
+  background-color: #3E5CA2;
+  img {
+    width: 60%;
+    height: 60%;
+  }
   
 @media (min-width: 321px) and (max-width: 480px) {
 
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-
+  img {
+    width: 60%;
+    height: 60%;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

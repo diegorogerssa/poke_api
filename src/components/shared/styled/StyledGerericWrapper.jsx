@@ -21,7 +21,7 @@ ${({ theme }) => css`
   `}
 
   @media (min-width: 321px) and (max-width: 480px) {
-    height:${(props) => props.height480 || '10vh'};
+    height:${(props) => props.height480 || '100vh'};
     width:${(props) => props.width480 || '100%'};
 }
 

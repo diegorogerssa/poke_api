@@ -66,6 +66,17 @@ const DataProvider = ({ children }) => {
     window.location.reload();
   };
 
+  const handleHomeReload = () => {
+    navigate('/');
+    setTimeout(() => {
+      setLoser(false);
+      setWinner(false);
+      setPokemon([]);
+    }, 0.1);
+    
+  };
+
+
   const data = {
     objectData,
     setObjectData,
@@ -78,6 +89,7 @@ const DataProvider = ({ children }) => {
     idRandom,
     handlePlayReload,
     handlePokedexReload,
+    handleHomeReload,
   };
 
   return (
