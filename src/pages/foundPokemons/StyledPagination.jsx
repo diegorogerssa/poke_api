@@ -16,7 +16,7 @@ const StyledPagination = styled.section`
   gap: 0;
 
   button {
-    width: 15px;
+    width: 3%;
     height: 30px;
     border-radius: 5px;
     font-weight: bold;
@@ -26,6 +26,47 @@ const StyledPagination = styled.section`
     padding: 0;
     gap: 0;
     margin: 2px;
+
+    :focus {
+      outline: none;
+      background-color: #3e5ca2;
+      filter: brightness(0.8);
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: all 0.5s ease-in-out;
+      cursor: pointer;
+      /* box-shadow: 0 0 0px #ffffff; */
+
+      /* :hover {
+        filter: brightness(0.8);
+        background-color: #3e5ca2;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+        box-shadow: 0 0 10px #ffffff; */
+
+        /* :active {
+          filter: brightness(0.8);
+          background-color: #3e5ca2;
+          color: #ffffff;
+          border: 1px solid #ffffff;
+          border-radius: 5px;
+          font-weight: bold;
+          font-size: 1.2rem;
+          transition: all 0.5s ease-in-out;
+          cursor: pointer;
+          box-shadow: 0 0 1px #000000; */
+
+        }
+
+
   }
   
   @media (min-width: 321px) and (max-width: 480px) {

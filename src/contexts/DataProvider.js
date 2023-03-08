@@ -36,7 +36,6 @@ const DataProvider = ({ children }) => {
       }
     }
     async function getPokemonData() {
-
       setIdRandom(random);
       // console.log(random);
       const pokemonData = await getPokemon(random);
@@ -45,37 +44,29 @@ const DataProvider = ({ children }) => {
     getPokemonData();
   }, []);
   
-
   const handlePlayReload = () => {
+    setLoser(false);
+    setWinner(false);
+    setPokemon([]);
     navigate('/play');
-    setTimeout(() => {
-      setLoser(false);
-      setWinner(false);
-      setPokemon([]);
-    }, 0.1);
     window.location.reload();
   };
 
   const handlePokedexReload = () => {
+    setLoser(false);
+    setWinner(false);
+    setPokemon([]);
     navigate('/foundpokemons');
-    setTimeout(() => {
-      setLoser(false);
-      setWinner(false);
-      setPokemon([]);
-    }, 0.1);
     window.location.reload();
   };
 
   const handleHomeReload = () => {
+    setLoser(false);
+    setWinner(false);
+    setPokemon([]);
     navigate('/');
-    setTimeout(() => {
-      setLoser(false);
-      setWinner(false);
-      setPokemon([]);
-    }, 0.1);
     
   };
-
 
   const data = {
     objectData,

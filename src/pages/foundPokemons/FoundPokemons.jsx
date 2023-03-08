@@ -80,6 +80,7 @@ import { getPokemon } from '../../services/api/api';
 import StyledGerericWrapper from '../../components/shared/styled/StyledGerericWrapper';
 import StyledFoundPokemons from './StyledFoundPokemons';
 import StyledPagination from './StyledPagination';
+import Loading from '../../components/loading/Loading';
 
 const FoundPokemons = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -119,7 +120,13 @@ const FoundPokemons = () => {
     pageNumbers.push(i);
   }
 
+  if ( !pokemons) {
+    <Loading />;
+  }
   return (
+    
+      
+        
     <StyledGerericWrapper>
       <StyledPagination>
         {
@@ -140,34 +147,45 @@ const FoundPokemons = () => {
         {
           foundPokemon &&
         currentItems.map((pokemon) => {
-          return <StyledGerericWrapper
-            justifyContent='space-around'
-            flexDirection='column'
-            flex-wrap='wrap'
-            width='28%'
-            height='auto'
-            width480='24%'
-            height480='auto'
-            width768='20%'
-            height768='auto'
-            width1024='18%'
-            height1024='auto'
-            width1280='16%'
-            height1280='auto'
-            width1281='15%'
-            height1281='auto'
-            margin='5px'
-            key={pokemon.id}
-          >
-            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-            <p>{pokemon.name}</p>
-          </StyledGerericWrapper>;
+          return (
+            <StyledGerericWrapper
+              justifyContent='space-around'
+              flexDirection='column'
+              flex-wrap='wrap'
+              width='28%'
+              height='auto'
+              width480='24%'
+              height480='auto'
+              width768='20%'
+              height768='auto'
+              width1024='18%'
+              height1024='auto'
+              width1280='16%'
+              height1280='auto'
+              width1281='15%'
+              height1281='auto'
+              margin='5px'
+              key={pokemon.id}
+            >
+              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              <p>{pokemon.name}</p>
+            </StyledGerericWrapper>
+          );
         })
         }
         {
           !foundPokemon &&
-        <StyledGerericWrapper>
-          <p>Voce ainda nao encontrou nenhum pokemon</p>
+        <StyledGerericWrapper
+          
+          height='auto'
+          height480='auto'
+          height768='auto'
+          height1024='auto'
+          height1280='auto'
+          height1281='auto'
+          backgroundColor='#3E5CA2'
+        >
+          <p style={{ color: '#fff' }}>Voce ainda nao encontrou nenhum pokemon</p>
         </StyledGerericWrapper>
         }
       
