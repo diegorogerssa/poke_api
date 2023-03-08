@@ -13,6 +13,10 @@ export const DetailsStyled = styled.div`
     font-size: 2rem;
     margin-bottom: 1rem;
   }
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 
   img {
     width: 100%;
@@ -20,9 +24,17 @@ export const DetailsStyled = styled.div`
     margin-bottom: 1rem;
   }
 
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+  }
+
   p {
     width: 100%;
-    max-width: 400px;
-    text-align: justify;
+    text-align: center;
+    font-weight: 900;
+    font-size: large;
+    
   }
 `;

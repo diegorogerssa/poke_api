@@ -14,7 +14,6 @@ import { useLocation } from 'react-router-dom';
 
 const AppRouter = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
   return (
     <>
       { pathname !== '/' && <Header /> }
