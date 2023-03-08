@@ -13,6 +13,11 @@ const StyledFoundPokemons = styled.div`
     width: 60%;
     height: 60%;
   }
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
   
 @media (min-width: 321px) and (max-width: 480px) {
 

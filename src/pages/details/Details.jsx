@@ -25,12 +25,8 @@ const Details = () => {
       <h1>{ pokemon.name }</h1>
 
       <img src={pokemon?.sprites?.other['official-artwork']?.front_default} alt={pokemon.name}/>
-      <h2>Habilidades</h2>
-      <div>
-        <p>{ pokemon.abilities[0]?.ability?.name }</p>
-        <p>{ pokemon.abilities[1]?.ability?.name }</p>
-        <p>{ pokemon.abilities[2]?.ability?.name }</p>
-      </div>
+      
+      
     </DetailsStyled>
   );
 };

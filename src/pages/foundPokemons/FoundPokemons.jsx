@@ -82,35 +82,35 @@ const FoundPokemons = () => {
           foundPokemon &&
           currentItems.map((pokemon) => {
             return (
-              <button
-                key={pokemon.name}
-                onClick={handleDetails}
+              <StyledGerericWrapper
+                  
+                  
+                justifyContent='space-around'
+                flexDirection='column'
+                flex-wrap='wrap'
+                width='28%'
+                height='auto'
+                width480='24%'
+                height480='auto'
+                width768='20%'
+                height768='auto'
+                width1024='18%'
+                height1024='auto'
+                width1280='16%'
+                height1280='auto'
+                width1281='15%'
+                height1281='auto'
+                margin='5px'
+                key={pokemon.id}
               >
-                <StyledGerericWrapper
-                  
-                  
-                  justifyContent='space-around'
-                  flexDirection='column'
-                  flex-wrap='wrap'
-                  width='28%'
-                  height='auto'
-                  width480='24%'
-                  height480='auto'
-                  width768='20%'
-                  height768='auto'
-                  width1024='18%'
-                  height1024='auto'
-                  width1280='16%'
-                  height1280='auto'
-                  width1281='15%'
-                  height1281='auto'
-                  margin='5px'
-                  key={pokemon.id}
+                <button
+                  key={pokemon.name}
+                  onClick={handleDetails}
                 >
                   <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                   <p>{pokemon.name}</p>
-                </StyledGerericWrapper>
-              </button>
+                </button>
+              </StyledGerericWrapper>
             );
           })
         }
