@@ -62,7 +62,7 @@ const CardWhatIsNamePokemon =  () => {
             return newArray;
           },);
           setQtdPokeball(!qtdPokeball);
-          console.log(qtdPokeball);
+          // console.log(qtdPokeball);
         }
       });
     }
@@ -70,8 +70,8 @@ const CardWhatIsNamePokemon =  () => {
   
   useEffect(() => {
     localStorage.setItem('pokeballs', pokeball);
-    console.log('controlado');
-    console.log(pokeball);
+    // console.log('controlado');
+    // console.log(pokeball);
 
   }, [qtdPokeball]);
 

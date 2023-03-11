@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import DataContext from './DataContext';
+import DataContext from './DataContext.js';
 import PropTypes from 'prop-types';
-import { getPokemons } from '../utils/data';
-import { getPokemon } from '../services/api/api';
+import { getPokemons } from '../utils/data.js';
+import { getPokemon } from '../services/api/api.js';
 import { useNavigate } from 'react-router-dom';
 
 

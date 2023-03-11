@@ -1,33 +1,44 @@
 import styled from 'styled-components';
 
-const StyledFoundPokemons = styled.div`
+const StyledFoundPokemons = styled.section`
   display: flex;
   align-content: flex-start;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  height: 100%;
+  height: auto;
   padding: 5px;
   background-color: #3E5CA2;
-  img {
-    width: 60%;
-    height: 60%;
+
+  a {
+    text-decoration: none;
+    color: #3E5CA2;
+    margin: 5px;
   }
-  button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-  }
+ div {
+   
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+ 
+ }
+  text-align: center;
+  
   
 @media (min-width: 321px) and (max-width: 480px) {
 
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-  img {
-    width: 60%;
-    height: 60%;
-  }
+
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

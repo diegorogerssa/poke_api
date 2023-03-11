@@ -16,7 +16,7 @@ const StyledWapper = styled.section`
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-/* Adicione seus estilos aqui */
+
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

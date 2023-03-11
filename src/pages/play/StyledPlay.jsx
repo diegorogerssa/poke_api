@@ -9,7 +9,7 @@ export const StyledPlay = styled.div`
   align-items: center;
   margin: auto;
   width: 100%;
-  height: 92%;
+  height: 90vh;
   overflow: hidden;
   background-color: ${({theme}) => theme.light.palette.primary.blue};
   cursor:  url(${cursor}), auto;
@@ -46,7 +46,7 @@ export const StyledPlay = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 90%;
-  height: 90%;
+
 }
 
 

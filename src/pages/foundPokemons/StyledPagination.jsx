@@ -16,7 +16,7 @@ const StyledPagination = styled.section`
   gap: 0;
 
   button {
-    width: 3%;
+    width: 15%;
     height: 30px;
     border-radius: 5px;
     font-weight: bold;

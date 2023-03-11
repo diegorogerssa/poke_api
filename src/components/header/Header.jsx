@@ -11,6 +11,7 @@ import pokemon from '../../assets/header/pokemon.png';
 
 import DataContext from '../../contexts/DataContext';
 import { useLocation } from 'react-router-dom';
+// import Gen from '../generation/Gen';
 
 
 const Header = () => {
@@ -60,15 +61,18 @@ const Header = () => {
       }
       {
         pathname === '/play'   &&
-        <button onClick={ handlePokedexReload }>
-          <StyledImg src={ pokedexIcon } alt="pokedex" 
-            width='45px'
-            width768='60px'
-            width1024='70px'
-            width1280='70px'
-            width1281='75px'
-          />
-        </button>
+        <>
+          <button onClick={ handlePokedexReload }>
+            <StyledImg src={ pokedexIcon } alt="pokedex"
+              width='45px'
+              width768='60px'
+              width1024='70px'
+              width1280='70px'
+              width1281='75px'
+            />
+          </button>
+          {/* <Gen /> */}
+        </>
       }
       {
         pathname === '/foundpokemons'   &&
@@ -83,7 +87,6 @@ const Header = () => {
           />
         </button>
       }
-     
     </StyledHeader>
   );
 };

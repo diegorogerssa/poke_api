@@ -11,7 +11,7 @@ const AppStyled = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+ height: auto;
   background-color: #3E5CA2;
 
   

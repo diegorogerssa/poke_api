@@ -7,7 +7,7 @@ export const StyledWrapper = styled.div`
   justify-content: center;
   justify-items: center;
   width: 100%;
-  height: auto;
+  height: 100vh;
   background-color: ${({ theme }) => theme.light.palette.primary.blue};
   border-radius: 0;
 
