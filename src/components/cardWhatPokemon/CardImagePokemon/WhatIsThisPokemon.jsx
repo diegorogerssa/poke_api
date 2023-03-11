@@ -100,6 +100,10 @@ const CardPokemon = () => {
   const { pokemon } = useContext(DataContext);
   // console.log(loser);
 
+  const handleContextmenu = (e) => {
+    e.preventDefault();
+  };
+
   return (
     
     <CardContainer 
@@ -110,7 +114,7 @@ const CardPokemon = () => {
         height1281='80%'
         filter = 'brightness(0)'
         backgroundColor='transparent'>
-        <img src={pokemon?.sprites?.other['official-artwork']?.front_default} alt={pokemon.name} draggable="false" />
+        <img src={pokemon?.sprites?.other['official-artwork']?.front_default} alt={pokemon.name} draggable="false" onContextMenu={handleContextmenu}/>
       </StyledGerericWrapper>
     </CardContainer>
   );
