@@ -4,15 +4,17 @@ import StyledGerericWrapper from '../../components/shared/styled/StyledGerericWr
 import StyledFoundPokemons from './StyledFoundPokemons';
 import StyledPagination from './StyledPagination';
 import Loading from '../../components/loading/Loading';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import StyledWrapperFound from './StyledWrapperFound';
+import Wrapper from './Wrapper';
 
 const FoundPokemons = () => {
   const [pokemons, setPokemons] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [foundPokemon, setFoundPokemon] = useState(true);
-  const itemsPerPage = 24;
+  const itemsPerPage = 50;
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const foundPokemons = JSON.parse(localStorage.getItem('idsPokemons'));
@@ -46,10 +48,11 @@ const FoundPokemons = () => {
     pageNumbers.push(i);
   }
 
-  const handleDetails = (e) => {
-    navigate(`/details/${e.target.innerText}`);
+  // const handleDetails = (e) => {
+  //   console.log(e);
+  //   navigate(`/details/${e.target.innerText}`);
   
-  };
+  // };
 
 
   if ( !pokemons) {
@@ -58,8 +61,7 @@ const FoundPokemons = () => {
   return (
     
       
-        
-    <StyledGerericWrapper>
+    <Wrapper>
       <StyledPagination>
         {
           pageNumbers.map((number) => {
@@ -75,48 +77,30 @@ const FoundPokemons = () => {
           })
         }
       </StyledPagination>
-      <StyledFoundPokemons
-      >
-      
-        {
-          foundPokemon &&
+      <StyledWrapperFound>
+        <StyledFoundPokemons
+        >
+          {
+            foundPokemon &&
           currentItems.map((pokemon) => {
             return (
-              <StyledGerericWrapper
-                  
-                  
-                justifyContent='space-around'
-                flexDirection='column'
-                flex-wrap='wrap'
-                width='28%'
-                height='auto'
-                width480='24%'
-                height480='auto'
-                width768='20%'
-                height768='auto'
-                width1024='18%'
-                height1024='auto'
-                width1280='16%'
-                height1280='auto'
-                width1281='15%'
-                height1281='auto'
-                margin='5px'
+              <Link to={`/details/${pokemon.id}`}
                 key={pokemon.id}
               >
-                <button
-                  key={pokemon.name}
-                  onClick={handleDetails}
+                <div
+                  
                 >
-                  <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                
+                  <img src={pokemon.sprites.front_default} alt={pokemon.id} />
                   <p>{pokemon.name}</p>
-                </button>
-              </StyledGerericWrapper>
+                </div>
+              </Link>
             );
           })
-        }
+          }
        
-        {
-          !foundPokemon &&
+          {
+            !foundPokemon &&
         <StyledGerericWrapper
           
           height='auto'
@@ -129,10 +113,11 @@ const FoundPokemons = () => {
         >
           <p style={{ color: '#fff' }}>Voce ainda nao encontrou nenhum pokemon</p>
         </StyledGerericWrapper>
-        }
+          }
       
-      </StyledFoundPokemons>
-    </StyledGerericWrapper>
+        </StyledFoundPokemons>
+      </StyledWrapperFound>
+    </Wrapper>
   );
 };
 

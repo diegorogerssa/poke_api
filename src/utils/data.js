@@ -1,4 +1,4 @@
-import { getPokeApi, getSpecies } from '../services/api/api';
+import { getPokeApi, getSpecies } from '../services/api/api.js';
 
 
 export const getPokemons = async () => {
