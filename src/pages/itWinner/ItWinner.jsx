@@ -3,6 +3,10 @@ import poke from '../../assets/pokebola-wins.png';
 import DataContext from '../../contexts/DataContext';
 import StyledItWinner from './StyledItWinner';
 import { useNavigate } from 'react-router-dom';
+import StyledWrapper from '../../components/layouts/StyledWrapper';
+import StyledButton from '../../components/inputs/StyledButton';
+import StyledImage from '../../components/dataDisplay/StyledImage';
+import StyledParagraph from '../../components/typography/StyledParagraph';
 
 const ItWinner = () => {
   const { pokemon, handlePlayReload} = useContext(DataContext);
@@ -14,29 +18,27 @@ const ItWinner = () => {
   };
       
   return (
-    <StyledItWinner>
-      <div>
-        <img 
-          width='20px'
+    <StyledWrapper>
+      <StyledItWinner>
+        <StyledImage 
           src={poke} 
           alt="icon-poke" />
-        <p>Pokemon Encontrado</p>
-        <img 
+        <StyledParagraph size='0.9rem'>Pokemon Encontrado</StyledParagraph>
+        <StyledImage 
           src={pokemon?.sprites?.other['official-artwork']?.front_default} 
           alt={pokemon.name} 
-          width='200px'
         />
-        <p>{pokemon.name}</p>
-        <button
+        <StyledParagraph size='1.1rem'>{pokemon.name}</StyledParagraph>
+        <StyledButton
           onClick={handlePlayReload}
         >
-          Jogar Novamente</button>
-        <button
+          Jogar Novamente</StyledButton>
+        <StyledButton
           onClick={handleNavigate}
         >
-          Ver Pokedex</button>
-      </div>
-    </StyledItWinner>
+          Ver Pokedex</StyledButton>
+      </StyledItWinner>
+    </StyledWrapper>
   );
 };
 

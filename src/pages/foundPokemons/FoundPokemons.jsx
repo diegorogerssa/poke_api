@@ -82,7 +82,7 @@ const FoundPokemons = () => {
         >
           {
             foundPokemon &&
-          currentItems.map((pokemon) => {
+          currentItems.reverse().map((pokemon) => {
             return (
               <Link to={`/details/${pokemon.id}`}
                 key={pokemon.id}

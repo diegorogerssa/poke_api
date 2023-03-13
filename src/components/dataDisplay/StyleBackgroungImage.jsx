@@ -1,27 +1,25 @@
 import styled from 'styled-components';
-import poke from '../../../../assets/pokebola-loser.png';
 
-const StyledPokebola = styled.span`
+const StyleBackgroungImage = styled.div`
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    background-image: url(${poke});
+    justify-content: ${props => props.justify};
+    align-items: ${props => props.align};
+    background-image: url(${props => props.image});
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
     background-color: transparent;
-    height: 70px;
-    width: 70px;
-    font-size:1.2rem;
-    color: #3c3d3c;
+    height: 100px;
+    width: 100px;
+    font-size: ${props => props.fontSize};
+    color: ${props => props.color? props.color : '#3c3d3c'};
 
 @media (min-width: 321px) and (max-width: 480px) {
 
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-    width: 85px;
-    height: 85px;
+    
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -33,9 +31,7 @@ const StyledPokebola = styled.span`
 }
 
 @media (min-width: 1281px) {
-    width: 110px;
-    height: 110px
 }
-`;  
+`;
 
-export default StyledPokebola;
+export default StyleBackgroungImage;

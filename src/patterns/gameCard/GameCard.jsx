@@ -1,13 +1,15 @@
 import React, { useEffect, useContext, useState, useRef } from 'react';
-import DataContext from '../../../contexts/DataContext';
-import StyledWapper from './styles/StyledWapper';
-import StyledNamePokemon from './styles/StyledNamePokemon';
-import StyledPointsLife from './styles/StyledPointsLife';
-import StyledGerericWrapper from '../../shared/styled/StyledGerericWrapper';
-import StyledAlfa from './styles/StyledAlfa';
-
-import StyledPokebola from './styles/StyledPokebola';
+import DataContext from '../../contexts/DataContext';
+// import StyledWrapper from './styles/StyledGameCard';
+// import StyledNamePokemon from './styles/StyledNamePokemon';
+// import StyledPointsLife from './styles/StyledPointsLife';
+import StyledGerericWrapper from '../../components/shared/styled/StyledGerericWrapper';
+import { StyledWrapper, StyledAlfa, StyledNamePokemon  } from './styles/StyledGameCard';
+import heart from '../../assets/heart.png';
+import poke from '../../assets/pokebola-loser.png';
+// import StyledPokebola from './styles/StyledPokebola';
 import { useNavigate } from 'react-router-dom';
+import StyleBackgroungImage from '../../components/dataDisplay/StyleBackgroungImage';
 
 
 const CardWhatIsNamePokemon =  () => {
@@ -148,7 +150,7 @@ const CardWhatIsNamePokemon =  () => {
   }, [pointsLife]);
   
   if (array.length > 0 ) return (
-    <StyledWapper>
+    <StyledWrapper>
       <StyledNamePokemon>
         {
           array.map((letra, i) => {
@@ -161,31 +163,45 @@ const CardWhatIsNamePokemon =  () => {
       </StyledNamePokemon>        
       <StyledGerericWrapper
         justifyContent = 'center'
-        height = '15vh'
-        height480 = '10vh'
-        height768 = '15vh'
-        height1024 = '9vh'
-        height1280 = '40%'
-        height1281 = '20%'
+        height = '25%'
+        height480 = '25%'
+        height768 = '25%'
+        height1024 = '25%'
+        height1280 = '25%'
+        height1281 = '25%'
         width1281 = '100%'
         width =  '100vw'
-        // margin = '10px 0 10px 0'
+        margin = '10px 0 10px 0'
         gap = '10vw'
         backgroundColor = {({theme}) => theme.light.palette.secondary.yellow}
       >
-        <StyledPointsLife>{pointsLife}</StyledPointsLife>
-        <StyledPokebola
+        <StyleBackgroungImage
+          image = {heart}
+          justify = 'center'
+          align = 'center'
+          fontSize = '1.5rem'
+          color='#ececec'
+        >
+          {pointsLife}
+        </StyleBackgroungImage>
+        <StyleBackgroungImage
+          image = {poke}
+          justify = 'flex-end'
+          align = 'flex-start'
+          fontSize = '1.5rem'
           onClick = {usePokeball}
-        >{ pokeball }</StyledPokebola>   
+        >
+          { pokeball }
+        </StyleBackgroungImage>   
           
       </StyledGerericWrapper>
         
       <StyledGerericWrapper
-        height = '30vh'
-        height480= '23vh'
-        height768 = '30vh'
-        height1024 = '30vh'
-        height1280 = '65%'
+        height = '50%'
+        height480= '50%'
+        height768 = '50%'
+        height1024 = '50%'
+        height1280 = '50%'
         height1281 = '50%'
         width1281 = '100%'
         borderRadius1281 = '0 0 20px 0'
@@ -199,7 +215,7 @@ const CardWhatIsNamePokemon =  () => {
             onClick = {captureLetter}>{letra}</StyledAlfa>)
         }
       </StyledGerericWrapper>
-    </StyledWapper>
+    </StyledWrapper>
   );
 };
 
