@@ -1,22 +1,21 @@
 {
   "files": {
-    "main.js": "/pokedex-react-2.0/static/js/main.78298d3c.js",
+    "main.js": "/pokedex-react-2.0/static/js/main.45dedd47.js",
     "static/media/quem-e-esse-pokemon.png": "/pokedex-react-2.0/static/media/quem-e-esse-pokemon.13673673e65245694f06.png",
     "static/media/pokemon.png": "/pokedex-react-2.0/static/media/pokemon.15bde685e159f39bd86f.png",
     "static/media/pokedex.png": "/pokedex-react-2.0/static/media/pokedex.8b7661bc12f5ff866b8b.png",
     "static/media/loading.png": "/pokedex-react-2.0/static/media/loading.f188b4a8e9d80976e376.png",
     "static/media/pokedexIcon.png": "/pokedex-react-2.0/static/media/pokedexIcon.9ac07b56cc6e1ca9a82c.png",
     "static/media/play.png": "/pokedex-react-2.0/static/media/play.a2eea8a5dcfbe4146e73.png",
-    "static/media/home.png": "/pokedex-react-2.0/static/media/home.e89f29c9257426609b84.png",
     "static/media/loser-background.png": "/pokedex-react-2.0/static/media/loser-background.272245118dcba2e84a69.png",
+    "static/media/pokebola-loser.png": "/pokedex-react-2.0/static/media/pokebola-loser.e43e48539d1a671b39f8.png",
     "static/media/pokebola-wins.png": "/pokedex-react-2.0/static/media/pokebola-wins.2f087244693f544e2767.png",
     "static/media/ditto-cursor.cur": "/pokedex-react-2.0/static/media/ditto-cursor.ee7095acb9de5d104426.cur",
     "static/media/ditto-thinking-cursor.cur": "/pokedex-react-2.0/static/media/ditto-thinking-cursor.687e41eb345f6815d1a1.cur",
-    "static/media/heart.svg": "/pokedex-react-2.0/static/media/heart.d892e716bb105e5b1a8018424fd29719.svg",
     "index.html": "/pokedex-react-2.0/index.html",
-    "main.78298d3c.js.map": "/pokedex-react-2.0/static/js/main.78298d3c.js.map"
+    "main.45dedd47.js.map": "/pokedex-react-2.0/static/js/main.45dedd47.js.map"
   },
   "entrypoints": [
-    "static/js/main.78298d3c.js"
+    "static/js/main.45dedd47.js"
   ]
 }
