@@ -20,9 +20,9 @@ ${({ theme }) => css`
     gap: ${(props) => props.gap || '0'};
   `}
 
-  @media (min-width: 321px) and (max-width: 480px) {
-    height:${(props) => props.height480 || '100vh'};
-    width:${(props) => props.width480 || '100%'};
+@media (min-width: 321px) and (max-width: 480px) {
+  height:${(props) => props.height480 || '100vh'};
+  width:${(props) => props.width480 || '100%'};
 }
 
 @media (min-width: 481px) and (max-width: 768px) {

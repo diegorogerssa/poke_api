@@ -60,10 +60,10 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledImg = styled.img`
-    width: ${props => props.width ||  '100px'};
-    height: ${props => props.height ||  'auto'};
+    width: ${props => props.width ||  'auto'};
+    height: ${props => props.height ||  '100%'};
 
-@media (min-width: 321px) and (max-width: 480px) {
+/* @media (min-width: 321px) and (max-width: 480px) {
 
 }
 
@@ -85,8 +85,7 @@ export const StyledImg = styled.img`
 }
 
 @media (min-width: 1281px) {
-  width: ${props => props.width1281 || '100px'};
+  width: ${props => props.width1281 || '100px'}; */
 
-}
 
     `;

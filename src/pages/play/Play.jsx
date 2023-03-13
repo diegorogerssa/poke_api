@@ -1,8 +1,8 @@
 
 import React, { useContext } from 'react';
 import { StyledPlay } from './StyledPlay';
-import CardImagePokemon from '../../components/cardWhatPokemon/CardImagePokemon/WhatIsThisPokemon';
-import CardWhatIsNamePokemon from '../../components/cardWhatPokemon/cardPlay/WhatIsNamePokemon';
+import GameCard from '../../patterns/gameCard/GameCard';
+import ImagePlay from '../../patterns/ImagePlay/ImagePlay';
 import Loading from '../../components/loading/Loading';
 import DataContext from '../../contexts/DataContext';
 
@@ -14,8 +14,8 @@ const Play = () => {
   }
   return (
     <StyledPlay>
-      <CardImagePokemon />
-      <CardWhatIsNamePokemon />
+      <ImagePlay />
+      <GameCard />
     </StyledPlay>
   );
 };   

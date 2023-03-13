@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const StyledHeading = styled('h1').attrs(({ level}) => ({
+const StyledHeading = styled('h1').attrs(({ level }) => ({
   as: `h${level}`,
 }))`
 ${({ theme }) => css`
