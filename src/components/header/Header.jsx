@@ -8,7 +8,6 @@ import pokemon from '../../assets/header/pokemon.png';
 import DataContext from '../../contexts/DataContext';
 import { useLocation } from 'react-router-dom';
 
-
 const Header = () => {
 
   const { handlePlayReload, handlePokedexReload, handleHomeReload }  = useContext(DataContext);

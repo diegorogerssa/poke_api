@@ -21,6 +21,7 @@ const CardWhatIsNamePokemon =  () => {
     setLoser,
     idRandom,
   } = useContext(DataContext);
+  // console.log(pokemon);
 
   const [array, setArray] = useState([]);
   const [pointsLife, setPointsLife] = useState(3);
@@ -109,11 +110,13 @@ const CardWhatIsNamePokemon =  () => {
       setPokeball(pokeball + 1);
 
       const getPokemons = JSON.parse(localStorage.getItem('idsPokemons'));
+      const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
       if (getPokemons) {
-        const pokeIds = [...getPokemons, idRandom];
+        const pokeIds = [...getPokemons,{ id: idRandom, name: pokemon.name, imagem: image}];
+        // getPokemons.push(pokeIds);
         localStorage.setItem('idsPokemons', JSON.stringify(pokeIds));
       } else {
-        localStorage.setItem('idsPokemons', JSON.stringify([idRandom]));
+        localStorage.setItem('idsPokemons', JSON.stringify([{ id: idRandom, name: pokemon.name, imagem: image}]));
       }
     }
   };

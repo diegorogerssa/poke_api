@@ -9,7 +9,7 @@ export const StyledPlay = styled.div`
   align-items: center;
   margin: auto;
   width: 100%;
-  height: 90vh;
+  height: 81vh;
   overflow: hidden;
   background-color: ${({theme}) => theme.light.palette.primary.blue};
   cursor:  url(${cursor}), auto;

@@ -10,6 +10,7 @@ import ItLost from '../pages/itLost.jsx/ItLost';
 import ItWinner from '../pages/itWinner/ItWinner';
 import Play from '../pages/play/Play';
 import { useLocation } from 'react-router-dom';
+import Gen from '../pages/generation/Gen';
 
 
 const AppRouter = () => {
@@ -25,7 +26,8 @@ const AppRouter = () => {
         <Route path="/itwinner" element={<ItWinner />}  />
         <Route path="/about" element={<About />} />
         <Route path= "/foundpokemons" element={<FoundPokemons />} />
-        <Route path="details/:id" element={<Details />} />
+        <Route path="/details/:id" element={<Details />} />
+        <Route path="/geracao" element={<Gen />} />
       </Routes>
     </>
   );
