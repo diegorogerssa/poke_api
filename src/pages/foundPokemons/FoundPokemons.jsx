@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getPokemon } from '../../services/api/api';  
+// import { getPokemon } from '../../services/api/api';  
 import StyledGerericWrapper from '../../components/shared/styled/StyledGerericWrapper';
 import StyledFoundPokemons from './StyledFoundPokemons';
 import StyledPagination from './StyledPagination';
@@ -7,41 +7,70 @@ import Loading from '../../components/loading/Loading';
 import { Link } from 'react-router-dom';
 import StyledWrapperFound from './StyledWrapperFound';
 import Wrapper from './Wrapper';
+import SelectGen from '../../components/inputs/selectGen/SelectGen';
+import { intervalGeneration } from '../../utils/generation';
+
 
 const FoundPokemons = () => {
   const [pokemons, setPokemons] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [foundPokemon, setFoundPokemon] = useState(true);
+  const [gen, setGen] = useState(0);
+  const [interval, setInterval] = useState(0);
   const itemsPerPage = 50;
-
+  
   // const navigate = useNavigate();
 
   useEffect(() => {
     const foundPokemons = JSON.parse(localStorage.getItem('idsPokemons'));
+    // console.log(foundPokemons);
     if (!foundPokemons) {
       setFoundPokemon(false);
       
       return;
     }
 
-    const promisse = Promise.all(foundPokemons.map(async (id) => {
-      const res = await getPokemon(id);
-      return res;
-    }));
+    
 
-    promisse.then((res) => {
-      setPokemons(res);
-    }); 
+    // const promisse = Promise.all(foundPokemons.map(async (id) => {
+    //   const res = await getPokemon(id);
+    //   return res;
+    // }));
+
+    // promisse.then((res) => {
+    setPokemons(foundPokemons);
+    // }); 
 
   }, []);
+
+  const activeGen = (e) => {
+    setGen(Number(e.target.value));
+    
+  };
+
+  useEffect(() => {
+    const interval = intervalGeneration(gen);
+    setInterval(interval);
+    // console.log(interval);
+  }, [gen]);
+
+  
 
   const handleClick = (event) => {
     setCurrentPage(Number(event.target.id));
   };
+  let pokemonGen = [];
+  if (interval.length === 0 ){
+    pokemonGen = pokemons;
+  }else{
+    pokemonGen = pokemons.filter((ele) => ele.id >= interval[0] && ele.id <= interval[1]);
+
+  }
+
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = pokemons.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = pokemonGen.slice(indexOfFirstItem, indexOfLastItem);
 
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(pokemons.length / itemsPerPage); i++) {
@@ -55,6 +84,9 @@ const FoundPokemons = () => {
   // };
 
 
+
+
+
   if ( !pokemons) {
     <Loading />;
   }
@@ -62,6 +94,11 @@ const FoundPokemons = () => {
     
       
     <Wrapper>
+      
+      <SelectGen  
+        activeGen={activeGen}
+      />
+      
       <StyledPagination>
         {
           pageNumbers.map((number) => {
@@ -91,7 +128,7 @@ const FoundPokemons = () => {
                   
                 >
                 
-                  <img src={pokemon.sprites.front_default} alt={pokemon.id} />
+                  <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`} alt={pokemon.id} />
                   <p>{pokemon.name}</p>
                 </div>
               </Link>

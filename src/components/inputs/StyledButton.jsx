@@ -4,10 +4,10 @@ const StyledButton = styled.button`
 display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    height: 9%;
+    width: ${props => props.width? props.width : '80%'};
+    height: ${props => props.height? props.height : '9%'};
     border: none;
-    font-size: 1.5rem;
+    font-size: ${props => props.fontSize? props.fontSize : '1.5rem'};
     text-align: center;
     font-weight: bold;
     color: #ffffff;
@@ -15,6 +15,11 @@ display: flex;
     background-color: #CD3529;
     border-radius: 10px;
     box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+    
+    &:hover {
+        background-color: #E74C3C;
+    }
 `;
 
 export default StyledButton;

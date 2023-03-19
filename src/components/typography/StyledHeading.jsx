@@ -9,7 +9,7 @@ ${({ theme }) => css`
     font-family: ${(props) => props.fontFamily || 'Potta One, cursive'};
     font-weight: ${(props) => props.fontWeight || 'bold'};
     letter-spacing: ${(props) => props.letterSpacing || '0'};
-    padding: 10px;
+    padding: ${(props) => props.padding || '0'};
     border-radius: 10px;
     background-color: transparent;
     text-align: ${(props) => props.textAlign || 'center'};
