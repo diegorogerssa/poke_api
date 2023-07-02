@@ -1,7 +1,7 @@
 {
-  "name": "pokedex-react-2.0",
+  "name": "poke_api_front",
   "version": "0.1.0",
-  "homepage": "https://diegorogerssa.github.io/pokedex-react-2.0",
+  "homepage": "https://diegorogerssa.github.io/poke_api",
   "private": true,
   "type":"module",
   "dependencies": {
