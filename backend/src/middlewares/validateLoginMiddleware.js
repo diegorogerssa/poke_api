@@ -9,6 +9,5 @@ const validateLoginMiddleware = ( req, res, next) => {
     return res.status(400).json({message: 'password is required'});
   }
   next();
-
 }
 export default validateLoginMiddleware;

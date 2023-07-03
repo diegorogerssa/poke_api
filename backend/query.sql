@@ -29,18 +29,13 @@ CREATE TABLE user_pokemon(
     FOREIGN KEY (pokemon_id) REFERENCES pokemon(id)
 );
 INSERT INTO generation(generation, name)
-    VALUES(1, '1º geração'),
-          (2, '2° geração'),
-          (3, '3° geração'),
-          (4, '4° geração'),
-          (5, '5° geração'),
-          (6, '6° geração'),
-          (7, '7° geração'),
-          (8, '8° geração');
--- INSERT INTO user(name, email, pokeballs, id_generation)
---     VALUES('Diego', 'diego@email.com', 100, 1),
---           ('Miriam', 'miriam@email.com', 100, 1);
--- INSERT INTO pokemon(id_pokemon, name_pokemon, image)
---     VALUES(70, 'weepinbell', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/70.png');
--- INSERT INTO user_pokemon(user_id, pokemon_id)
---     VALUES(2, 1);
+    VALUES
+    (1, '1º geração'),
+    (2, '2° geração'),
+    (3, '3° geração'),
+    (4, '4° geração'),
+    (5, '5° geração'),
+    (6, '6° geração'),
+    (7, '7° geração'),
+    (8, '8° geração');
+
