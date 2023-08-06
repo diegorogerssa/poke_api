@@ -35,10 +35,10 @@ const DataProvider = ({ children }) => {
     localStorage.setItem('idGen', JSON.stringify(selectGen));
     const getPokemons = JSON.parse(localStorage.getItem('idsPokemons'));
     // let random = Math.floor(Math.random() * 150) + 1;
-    let random  = generation(selectGen);
+    // let random  = generation(selectGen);
     // console.log(random);
     // console.log(random);
-    // let random = 25;
+    let random = 25;
     if (getPokemons) {
       getPokemons.forEach((pokeId) => {
         // console.log(pokeId.id);

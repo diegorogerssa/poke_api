@@ -24,7 +24,7 @@ const CardWhatIsNamePokemon =  () => {
   // console.log(pokemon);
 
   const [array, setArray] = useState([]);
-  const [pointsLife, setPointsLife] = useState(3);
+  const [pointsLife, setPointsLife] = useState(20);
   const [qtdPokeball, setQtdPokeball] = useState(false);
   const alphabetRefs = useRef([]);
   const [pokeball, setPokeball] = useState(() => {
@@ -32,13 +32,13 @@ const CardWhatIsNamePokemon =  () => {
     return getPokeballs ?? 1000;
   });
 
-
+  const [blockedKeys, setBlockedKeys] = useState(new Set());
   
   const nameArray = pokemon.name 
     ? pokemon.name.split('') 
     : []; 
 
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  const alphabet = 'abcdefghijklçmnopqrstuvwxyz'
     .toLowerCase()
     .split('');
     
@@ -79,28 +79,103 @@ const CardWhatIsNamePokemon =  () => {
   }, [qtdPokeball]);
 
 
+  
 
   const captureLetter = (e) => {
     const letraCapturada = e.target.innerText;
     nameArray.filter((letra, i) => {
-      if(letra === letraCapturada) {
-        arrayFill[i] = letraCapturada;
-        setArray(prevArray => {
-          const newArray = [...prevArray];
-          newArray[i] = letraCapturada;
-          e.target.style.color = '#02e202';
+      const letraEstaBloqueada = blockedKeys.has(letraCapturada);
+      console.log(letraEstaBloqueada);
+      if (!letraEstaBloqueada) {
+        if(letra === letraCapturada) {
+          arrayFill[i] = letraCapturada;
+          setArray(prevArray => {
+            const newArray = [...prevArray];
+            newArray[i] = letraCapturada;
+            e.target.style.color = '#02e202';
+            e.target.disabled = true;
+            e.target.style.cursor = 'not-allowed';
+            return newArray;
+          },);
+        } else if (!nameArray.includes(letraCapturada)) {
+          e.target.style.color = '#b40606';
           e.target.disabled = true;
           e.target.style.cursor = 'not-allowed';
-          return newArray;
-        },);
-      } else if (!nameArray.includes(letraCapturada)) {
-        e.target.style.color = '#b40606';
-        e.target.disabled = true;
-        e.target.style.cursor = 'not-allowed';
-        setPointsLife(pointsLife - 1);
+          setBlockedKeys((prevBlockedKeys) => new Set(prevBlockedKeys.add(letraCapturada)));
+          setPointsLife(pointsLife - 1);
+        }
       }
     });
   };
+  
+
+
+
+  const handleKeyDown = (e) => {
+    const letraCapturada = e.key.toLowerCase();
+    nameArray.filter((letra, i) => {
+      const letraEstaBloqueada = blockedKeys.has(letraCapturada);
+      console.log(letraEstaBloqueada);
+      if (!letraEstaBloqueada) {
+        if(letra === letraCapturada) {
+          arrayFill[i] = letraCapturada;
+          setArray(prevArray => {
+            const newArray = [...prevArray];
+            newArray[i] = letraCapturada;
+            for (let index = 0; index < 26; index++) {
+              // console.log(alphabetRefs.current[index].innerText);
+              if (letra === alphabetRefs.current[index].innerText) {
+                alphabetRefs.current[index].style.color = '#02e202';
+                alphabetRefs.current[index].style.cursor = 'not-allowed';
+                setBlockedKeys((prevBlockedKeys) => new Set(prevBlockedKeys.add(letraCapturada)));
+                break;
+              }
+            }
+            return newArray;
+          },);
+        } else if (!nameArray.includes(letraCapturada)) {
+          e.preventDefault();
+          for (let index = 0; index < 26; index++) {
+            // console.log(alphabetRefs.current[index].innerText);
+            if (letraCapturada === alphabetRefs.current[index].innerText) {
+              alphabetRefs.current[index].style.color = '#b40606';
+              alphabetRefs.current[index].style.cursor = 'not-allowed';
+              setBlockedKeys((prevBlockedKeys) => new Set(prevBlockedKeys.add(letraCapturada)));
+              setPointsLife(pointsLife - 1);
+              break;
+            }
+          }
+        }
+      }
+    });
+  };
+
+  
+  
+
+
+  // const targetElement = alphabetRefs.current;
+  // console.log(targetElement);
+
+
+  
+  useEffect(() => {
+    // Adiciona o evento de tecla ao objeto document
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Remove o evento de tecla quando o componente é desmontado
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [arrayFill]);
+
+
+
+
+
+
+
+
 
   const verifyWinner = () => {
     const stringArray = array.join('');
@@ -215,9 +290,13 @@ const CardWhatIsNamePokemon =  () => {
           alphabet.map((letra, i) => <StyledAlfa 
             key={i} 
             ref={(element) => alphabetRefs.current[i] = element}
-            onClick = {captureLetter}>{letra}</StyledAlfa>)
+            onClick = {captureLetter}
+          >{letra}
+          </StyledAlfa>)
+            
         }
       </StyledGerericWrapper>
+      
     </StyledWrapper>
   );
 };

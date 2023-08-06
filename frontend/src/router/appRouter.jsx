@@ -11,6 +11,7 @@ import ItWinner from '../pages/itWinner/ItWinner';
 import Play from '../pages/play/Play';
 import { useLocation } from 'react-router-dom';
 import Gen from '../pages/generation/Gen';
+import Login from '../pages/login/Login';
 
 
 const AppRouter = () => {
@@ -21,6 +22,7 @@ const AppRouter = () => {
       
       <Routes>
         <Route path="/" element={<Home />} exact />
+        <Route path="/login" element={<Login />}  />
         <Route path="/play" element={<Play />}  />
         <Route path="/itloser" element={<ItLost />}  />
         <Route path="/itwinner" element={<ItWinner />}  />
